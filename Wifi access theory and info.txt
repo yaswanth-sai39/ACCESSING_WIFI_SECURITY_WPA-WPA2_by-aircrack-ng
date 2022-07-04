@@ -1,0 +1,38 @@
+Some of the important theory in wifi accessing:-
+
+Types of router protocols: 
+
+1.WEP
+2.WPA
+3.WPA2
+4.WPA3
+
+wpa3 is the secure one where as wpa2 but a little of it and
+we can crack the security of wpa/wpa2 by the aircrack-ng in kali linux to access the wifi.
+
+ESSID Wifi Name
+BSSID Mac like thing
+Beacon is a packet broadcast sent by the router that synchronizes the wireless network
+
+
+Requirements for wifi accessing: 
+1.Network adapter pendrive(which can supports monitor mode)
+2.Kali linux os
+3.commands of aircrack-ng
+4.wps enabled or wpa/wpa2 wifi in a locality - by own to test.
+
+
+Lets know some rules: 
+
+(DORA) means
+
+Discover
+Offer
+Request
+Acknowledge
+
+By dos of deauth by aireplay we can get the : 
+dos attack we could get the 
+
+2 way handshake Syn Ack  inserting of pendrive
+3 way handshake Syn Synack Ack connecting of wifi with user

